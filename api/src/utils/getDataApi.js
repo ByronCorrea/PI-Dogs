@@ -2,12 +2,12 @@
 const axios = require("axios");
 const { API_KEY } = process.env;
 
-async function getDataApi() {
+async function getAllDataAPI() {
   // Trae toda la data
-  let response = await axios.get(
+  let allData = await axios.get(
     `https://api.thedogapi.com/v1/breeds?api_key=${API_KEY}`
   );
-  response = response.data.map((el) => {
+  allData = allData.data.map((el) => {
     const pesoTemp = el.weight.metric.split("-");
     const alturaTemp = el.height.metric.split("-");
     const imagen = el.image.url;
@@ -25,9 +25,9 @@ async function getDataApi() {
     };
   });
 
-  return response;
+  return allData;
 }
 
 module.exports = {
-  getDataApi,
+  getAllDataAPI,
 };
