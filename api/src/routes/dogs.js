@@ -1,25 +1,18 @@
 const { Router } = require("express");
-
-const { Dog, Temperament } = require("../db");
-// const services = require("../services/services_DB");
-const services = require("../utils/getDataApi");
-// Importar todos los routers;
-// Ejemplo: const authRouter = require('./auth.js');
-
 const router = Router();
-
-//  GET /________________________________________________________________
+const { Breed, Temperament } = require("../db");
+const utils = require("../utils/getDataApi");
 
 router.get("/", async (req, res, next) => {
   try {
     const { name } = req.query;
 
-    let geDataForApi = await services.getAllDataAPI();
-    let getDataFromDB = await Dog.findAll({
+    let dataApi = await utils.getDataApi();
+    let dataDb = await Breed.findAll({
       include: Temperament,
     });
     // FORMATEO PARA Q DESDE API Y DESDE DB LLEGUEN AL FRONT IGUALES
-    getDataFromDB = getDataFromDB.map((el) => {
+    dataDb = dataDb.map((el) => {
       return {
         id: el.id,
         name: el.name,
@@ -36,14 +29,9 @@ router.get("/", async (req, res, next) => {
       };
     });
     // resp de API y de DB juntas
-    let allData = getDataFromDB.concat(geDataForApi);
+    let allData = dataDb.concat(dataApi);
 
     if (name) {
-      // console.log(
-      //   " Buscando coincidencias con la palabra: ".black.bgBlue +
-      //     name.red.bgBlue +
-      //     " "
-      // );
       let resp = allData.filter((el) =>
         el.name.toLowerCase().includes(name.toLowerCase())
       ); // ==> trae todos los q tengan la palabra buscada
@@ -65,27 +53,27 @@ router.get("/:id", async (req, res, next) => {
 
   try {
     if (id >= 1000) {
-      let getDataFromDB = await Dog.findByPk(id, {
+      let dataDb = await Breed.findByPk(id, {
         include: Temperament,
       });
-      console.log(getDataFromDB.name);
+      console.log(dataDb.name);
       res.json({
-        id: getDataFromDB.id,
-        name: getDataFromDB.name,
-        height_min: getDataFromDB.height_min,
-        height_max: getDataFromDB.height_max,
-        weight_min: getDataFromDB.weight_min,
-        weight_max: getDataFromDB.weight_max,
-        life_span: getDataFromDB.life_span,
-        image: getDataFromDB.image,
+        id: dataDb.id,
+        name: dataDb.name,
+        height_min: dataDb.height_min,
+        height_max: dataDb.height_max,
+        weight_min: dataDb.weight_min,
+        weight_max: dataDb.weight_max,
+        life_span: dataDb.life_span,
+        image: dataDb.image,
         userCreate: true,
-        temperaments: getDataFromDB.Temperaments.map((i) => {
+        temperaments: dataDb.Temperaments.map((i) => {
           return i.name;
         }).join(", "),
       });
     } else {
-      let geDataForApi = await services.getAllDataAPI();
-      let resp = geDataForApi.find((el) => el.id.toString() === id.toString());
+      let dataApi = await utils.getDataApi();
+      let resp = dataApi.find((el) => el.id.toString() === id.toString());
       if (resp === undefined) {
         res.status(404).json("Id no coincide con un perro exstente");
       }
@@ -110,7 +98,7 @@ router.post("/", async (req, res, next) => {
     temperaments,
   } = req.body;
   try {
-    let dogCreated = await Dog.create({
+    let dogCreated = await Breed.create({
       name,
       height_min,
       height_max,
@@ -120,24 +108,24 @@ router.post("/", async (req, res, next) => {
       image,
     });
 
-    if (temperaments.length) {
-      temperaments.map(async (tem) => {
-        try {
-          let temper = await Temperament.findOrCreate({ where: { name: tem } });
-          // console.log(temper.dataValues.name);
-          dogCreated.addTemperament(temper[0]);
-          // res.send(dogCreated);
-          console.log("Perro Cargado");
-        } catch (err) {
-          console.log(err);
-        }
-      });
+    // if (temperaments.length) {
+    // temperaments.map(async (tem) => {
+    try {
+      let temper = await Temperament.findOrCreate({ where: { name: tem } });
+      // console.log(temper.dataValues.name);
+      dogCreated.addTemperament(temper[0]);
+      // res.send(dogCreated);
+      console.log("Perro Cargado");
+    } catch (err) {
+      console.log(err);
     }
-    // res.redirect("/");
+    // });
+    // }
     res.send("Perro cargado");
   } catch (error) {
     next(error);
   }
+  // res.json(dogCreated);
 });
 //////////////////////////////////////////////////////////////////////////////////
 //DELETE
@@ -145,13 +133,13 @@ router.post("/", async (req, res, next) => {
 router.delete("/:id", async (req, res, next) => {
   const { id } = req.params;
   try {
-    Dog.destroy({ where: { id: id } });
-    let geDataForApi = await services.getAllDataAPI();
-    let getDataFromDB = await Dog.findAll({
+    Breed.destroy({ where: { id: id } });
+    let dataApi = await utils.getDataApi();
+    let dataDb = await Breed.findAll({
       include: Temperament,
     });
     // FORMATEO PARA Q DESDE API Y DESDE DB LLEGUEN AL FRONT IGUALES
-    getDataFromDB = getDataFromDB.map((el) => {
+    dataDb = dataDb.map((el) => {
       return {
         id: el.id,
         name: el.name,
@@ -168,7 +156,7 @@ router.delete("/:id", async (req, res, next) => {
       };
     });
     // resp de API y de DB juntas
-    let allData = getDataFromDB.concat(geDataForApi);
+    let allData = dataDb.concat(dataApi);
     console.log("Perro ELIMINADO de DB".bgRed);
     res.send(allData);
     // res.redirect("/");
