@@ -1,0 +1,42 @@
+.contRey {
+  padding: 20px 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+  column-gap: 110px;
+  row-gap: 40px;
+  width: 100vw;
+  height: fit-content;
+}
+
+.contFiltros select {
+  font-size: calc(1em + 0.2vw);
+  margin: 10px 10px;
+  border: none;
+  background-color: black;
+  color: #fff;
+  border-radius: 16px;
+  cursor: pointer;
+  padding-left: 5px;
+  transition: all 0.25s ease;
+}
+
+.arowButton,
+.arowButtonLef {
+  font-size: 5rem;
+
+  margin: 10px 10px;
+  border: none;
+
+  color: black;
+  border-radius: 16px;
+  cursor: pointer;
+}
+
+.arowButton:hover {
+  transform: translateX(3px);
+}
+.arowButtonLeft:hover {
+  transform: translateX(-3px);
+}

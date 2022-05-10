@@ -1,0 +1,173 @@
+.back {
+  width: 100%;
+
+  height: fit-content;
+  padding-bottom: 54vh;
+}
+
+.card {
+  max-width: 400px;
+  max-height: 600px;
+  margin: auto;
+  overflow-y: auto;
+  position: relative;
+  z-index: 1;
+  overflow-x: hidden;
+  background-color: rgba(255, 255, 255, 0.431);
+  display: flex;
+  transition: 0.3s;
+  flex-direction: column;
+  border-radius: 10px;
+  top: 6rem;
+  box-shadow: 0 8px 32px rgba(43, 42, 42, 0.418);
+  transition: all 0.1s ease;
+  text-align: center;
+  backdrop-filter: blur(4px);
+}
+
+.card:hover {
+  transform: translateY(1px);
+  box-shadow: 0px 3px 5px rgba(163, 170, 172, 0.568);
+  opacity: 1;
+}
+
+.card.isActive .cardHeader {
+  height: 80px;
+}
+.card.isActive .cardCover {
+  height: 100px;
+  top: -50px;
+}
+.card.isActive .cardAvatar {
+  transform: none;
+  left: 20px;
+  width: 50px;
+  height: 50px;
+  bottom: 10px;
+}
+.card.isActive .cardFullname,
+.card.isActive .cardJobTitle {
+  left: 86px;
+  transform: none;
+}
+.card.isActive .cardFullname {
+  bottom: 18px;
+  font-size: 19px;
+}
+.card.card.isActive .cardJobTitle {
+  bottom: 16px;
+  letter-spacing: 1px;
+  font-size: 10px;
+}
+.cardHeader {
+  position: relative;
+  display: flex;
+  height: 200px;
+  flex-shrink: 0;
+  width: 100%;
+  transition: 0.3s;
+}
+.cardHeader * {
+  transition: 0.3s;
+}
+.cardCover {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  height: 160px;
+  top: -20%;
+  left: 0;
+  will-change: top;
+  background-size: cover;
+  background-position: center;
+  filter: blur(10px);
+  transform: scale(1.2);
+  transition: 0.5s;
+  background-image: url(../../assets/cv.jpg);
+}
+
+.cardAvatar {
+  width: 100px;
+  height: 100px;
+  box-shadow: 0 8px 8px rgba(0, 0, 0, 0.2);
+  border-radius: 50%;
+  -o-object-position: center;
+  object-position: center;
+  -o-object-fit: cover;
+  object-fit: cover;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%) translateY(-64px);
+}
+.cardFullname {
+  position: absolute;
+  bottom: 0;
+  font-size: 22px;
+  font-weight: 700;
+  text-align: center;
+  white-space: nowrap;
+  transform: translateY(-10px) translateX(-50%);
+  left: 50%;
+  font-family: monospace;
+}
+.cardJobTitle {
+  position: absolute;
+  bottom: 0;
+  font-size: 12px;
+  white-space: nowrap;
+  font-size: 500;
+  opacity: 0.7;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  margin: 0;
+  left: 50%;
+  transform: translateX(-50%) translateY(-7px);
+  font-family: monospace;
+}
+.cardMain {
+  position: relative;
+  flex: 1;
+  display: flex;
+  padding-top: 10px;
+  flex-direction: column;
+}
+.cardSubtitle {
+  font-weight: 700;
+  font-size: 15px;
+  margin-bottom: 8px;
+  font-family: monospace;
+}
+.cardContent {
+  padding: 20px;
+}
+.cardDesc {
+  line-height: 1.6;
+  color: black;
+  font-size: 14px;
+  margin: 0;
+  font-weight: 400;
+  font-family: monospace;
+  text-align: justify;
+}
+.cardSocial {
+  display: relative;
+  align-items: center;
+  text-align: center;
+}
+.cardSocial a {
+  color: black;
+  font-size: 1.5rem;
+  display: inline-flex;
+  align-items: center;
+  margin-right: 10px;
+  text-decoration: none;
+}
+
+.cardSocial a:hover {
+  color: white;
+}
+
+.card[data-state="#about"] {
+  height: 450px;
+}

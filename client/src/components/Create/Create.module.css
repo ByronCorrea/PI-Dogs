@@ -1,0 +1,127 @@
+@import url("https://fonts.googleapis.com/css2?family=Yanone+Kaffeesatz:wght@500&display=swap");
+
+.contRey {
+  background-color: rgba(0, 0, 0, 0.5);
+  padding-top: 5vh;
+  width: 100vw;
+  height: fit-content;
+  padding-bottom: 23.5vh;
+}
+
+.contRey img {
+  width: 25vw;
+  margin-bottom: -3.7rem;
+}
+
+.caja {
+  margin: auto;
+  width: 70vw;
+  max-width: 750px;
+  height: fit-content;
+  background-color: black;
+  display: flex;
+  flex-direction: row;
+  border-radius: 0.1rem 10rem 0.1rem 10rem;
+  padding-top: 1rem;
+}
+
+.form {
+  width: 60%;
+  margin: 0 auto;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.compInput {
+  display: flex;
+  flex-direction: column;
+  margin: 5px;
+  font-weight: 600;
+  width: 100%;
+}
+
+.compInput .label {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.compInput .label p {
+  color: white;
+  margin: 5px;
+}
+
+input {
+  border: none;
+  margin: 5px;
+  border-radius: 8px;
+  padding: 5px;
+}
+
+.alturas {
+  display: flex;
+  flex-direction: row;
+  width: 50%;
+}
+
+.pesos {
+  display: flex;
+  flex-direction: row;
+  width: 50%;
+}
+
+.contBotonImg {
+  display: flex;
+  width: 100%;
+  height: fit-content;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.contBotonImg img {
+  width: 100px;
+  max-height: 120px;
+  margin: 30px 0;
+  margin-left: -5rem;
+  object-fit: contain;
+  border-radius: 9999px;
+}
+.contBotonImg h6 {
+  color: white;
+  margin-left: -2.5rem;
+  font-family: monospace;
+  font-size: 0.8rem;
+}
+
+.contBotonImg .botonSave button {
+  border: none;
+  cursor: pointer;
+  width: 80px;
+  height: 50px;
+  color: #fff;
+  background-color: rgb(0, 201, 57);
+
+  border-radius: 10px;
+  align-items: center;
+  padding: 5px;
+  display: flex;
+  justify-content: space-around;
+  font-weight: 500;
+}
+
+.cartel_none button {
+  background-color: red;
+
+  margin-bottom: 20px;
+  padding: 5px;
+  border: none;
+  border-radius: 10px;
+  color: #fff;
+}
+
+.cartel_ok {
+  background-color: greenyellow;
+  display: none;
+}

@@ -1,7 +1,7 @@
 const { Router } = require("express");
-const router = Router();
 const { Breed, Temperament } = require("../db");
 const utils = require("../utils/getDataApi");
+const router = Router();
 
 router.get("/", async (req, res, next) => {
   try {
@@ -37,7 +37,7 @@ router.get("/", async (req, res, next) => {
       ); // ==> trae todos los q tengan la palabra buscada
       // console.log(resp);
       if (resp.length === 0) {
-        return res.status(404).send(`${name} > No se encuentra Guardado`);
+        return res.status(404).send(`${name} > Not found`);
       }
       return res.json(resp);
     } else {
@@ -75,7 +75,7 @@ router.get("/:id", async (req, res, next) => {
       let dataApi = await utils.getDataApi();
       let resp = dataApi.find((el) => el.id.toString() === id.toString());
       if (resp === undefined) {
-        res.status(404).json("Id no coincide con un perro exstente");
+        res.status(404).json("Id dog not found");
       }
       res.send(resp);
     }
@@ -108,26 +108,24 @@ router.post("/", async (req, res, next) => {
       image,
     });
 
-    // if (temperaments.length) {
-    // temperaments.map(async (tem) => {
-    try {
-      let temper = await Temperament.findOrCreate({ where: { name: tem } });
-      // console.log(temper.dataValues.name);
-      dogCreated.addTemperament(temper[0]);
-      // res.send(dogCreated);
-      console.log("Perro Cargado");
-    } catch (err) {
-      console.log(err);
+    if (temperaments.length) {
+      temperaments.map(async (tem) => {
+        try {
+          let temper = await Temperament.findOrCreate({ where: { name: tem } });
+          dogCreated.addTemperament(temper[0]);
+
+          console.log("Send successfuly!");
+        } catch (err) {
+          console.log(err);
+        }
+      });
     }
-    // });
-    // }
-    res.send("Perro cargado");
+    res.send("Send successfuly!");
   } catch (error) {
     next(error);
   }
-  // res.json(dogCreated);
 });
-//////////////////////////////////////////////////////////////////////////////////
+
 //DELETE
 
 router.delete("/:id", async (req, res, next) => {
@@ -157,9 +155,8 @@ router.delete("/:id", async (req, res, next) => {
     });
     // resp de API y de DB juntas
     let allData = dataDb.concat(dataApi);
-    console.log("Perro ELIMINADO de DB".bgRed);
+    console.log("Delete successfully!".bgRed);
     res.send(allData);
-    // res.redirect("/");
   } catch (err) {
     next(err);
   }

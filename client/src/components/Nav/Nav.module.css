@@ -1,0 +1,36 @@
+.cont {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  text-align: center;
+  background: rgba(0, 0, 0, 0.775);
+  position: relative;
+  padding: 0.5rem;
+}
+
+.cont p {
+  font-size: calc(1em + 1vw);
+  margin: 8px;
+  font-weight: 500;
+  color: white;
+  padding: 0.3rem;
+  display: flex;
+  position: relative;
+  border-radius: 0.5rem;
+  margin-right: 3rem;
+}
+
+.active p {
+  border-bottom: 4px white solid;
+  border-top: 1px white solid;
+  border-left: 5px white solid;
+  border-right: 1px white solid;
+  border-color: white;
+}
+
+.logo {
+  color: white;
+  font-size: 3rem;
+  margin-right: 65rem;
+  margin-left: 2rem;
+}

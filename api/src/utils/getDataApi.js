@@ -3,7 +3,7 @@ const axios = require("axios");
 const { API_KEY } = process.env;
 
 async function getDataApi() {
-  // Trae toda la data
+  // Trae toda la data que necesito
   let response = await axios.get(
     `https://api.thedogapi.com/v1/breeds?api_key=${API_KEY}`
   );
