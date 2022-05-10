@@ -1,11 +1,10 @@
 .cont {
   display: flex;
-  justify-content: flex-start;
   align-items: center;
-  text-align: center;
   background: rgba(0, 0, 0, 0.775);
-  position: relative;
   padding: 0.5rem;
+  justify-content: space-around;
+  padding-right: 2rem;
 }
 
 .cont p {
@@ -14,10 +13,9 @@
   font-weight: 500;
   color: white;
   padding: 0.3rem;
-  display: flex;
   position: relative;
   border-radius: 0.5rem;
-  margin-right: 3rem;
+  margin-right: auto;
 }
 
 .active p {
@@ -31,6 +29,6 @@
 .logo {
   color: white;
   font-size: 3rem;
-  margin-right: 65rem;
-  margin-left: 2rem;
+  margin-right: auto;
+  margin-left: auto;
 }
