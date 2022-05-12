@@ -56,13 +56,6 @@ const Target = ({ props }) => {
                 {props.weight_max} Kg{"   "}
               </span>
             </p>
-            {props.userCreate ? (
-              <div className={style.tooltip}>
-                <div className={style.bottom}>
-                  <h5>Press to delete</h5>
-                </div>
-              </div>
-            ) : null}
           </div>
           <div className={style.temperamentos}>
             <p> {props.temperaments}</p>

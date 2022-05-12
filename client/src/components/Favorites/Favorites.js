@@ -7,8 +7,12 @@ import loafingimg2 from "../../assets/loadingDog_2.gif";
 import loadingImg from "../../assets/dog-mitchells-vs-machines.gif";
 
 import TargetFav from "../Home/Targets/TargetFav";
-import { get_Favorites } from "../../actions/index";
-
+import {
+  get_Favorites,
+  deleteDog,
+  delete_Favorites,
+} from "../../actions/index";
+import { RiDeleteBin6Line } from "react-icons/ri";
 import { HiArrowCircleRight, HiArrowCircleLeft } from "react-icons/hi";
 
 const Home = () => {
@@ -20,6 +24,21 @@ const Home = () => {
   const [paginado, setPaginado] = useState([0, 7]);
 
   let favoritesDogs = useSelector((state) => state.favorites);
+
+  function act() {
+    setLoading(true);
+    setPaginado([0, 7]);
+
+    setTimeout(() => {
+      setLoading(false);
+    }, 1000);
+  }
+
+  function deleteAndBack(id) {
+    deleteDog(id, dispatch);
+    dispatch(delete_Favorites(id));
+    act();
+  }
 
   function handlerClick(e) {
     if (e === "right") {
@@ -62,16 +81,27 @@ const Home = () => {
               el.userCreate === true ? (
                 <div key={el.id}>
                   <TargetFav props={el} key={el.id} />
+                  <div className={styles.tacho}>
+                    <span
+                      className={styles.iconDelete}
+                      onClick={() => deleteAndBack(el.id)}
+                    >
+                      <RiDeleteBin6Line />
+                    </span>
+                  </div>
                 </div>
               ) : (
                 <TargetFav props={el} key={el.id} />
               )
             ) : null
           )
-        ) : (
+        ) : favoritesDogs.length === 0 ? (
           <div>
             <img src={loafingimg2} alt="img" />
+            <h1 className={styles.no}>¡There are no favorites!</h1>
           </div>
+        ) : (
+          <p>Connection error</p>
         )}
       </div>
 

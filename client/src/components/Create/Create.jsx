@@ -14,9 +14,7 @@ const Create = () => {
 
   function validate(data) {
     const errors = {};
-    // if (!data.name)
-    //   errors.name =
-    //     "You must enter a breed or name minimum 4 characters without numbers";
+    if (!data.name) errors.name = "You must enter a breed";
     if (data.name.length < 4)
       errors.name = "Minimum 4 characters without numbers";
     if (!data.height_min) errors.height_min = "You must enter a minimum height";
@@ -134,7 +132,7 @@ const Create = () => {
       !formData.temperaments.length
     ) {
       setError_inputs(true);
-    } else if (formData.name.length > 5) {
+    } else if (formData.name.length > 10) {
       setError_inputs(false);
     } else {
       setError_inputs(false);

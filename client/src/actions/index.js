@@ -8,8 +8,13 @@ import {
   IS_FAVORITE,
   GET_FAVORITES,
   DELETE_FAVORITES,
+  CLEAR_BREEDS,
 } from "./types";
 import axios from "axios";
+
+export function clearBreeds() {
+  return { type: CLEAR_BREEDS };
+}
 
 export function getDogs() {
   return function (dispatch) {

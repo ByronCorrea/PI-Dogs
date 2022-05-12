@@ -5,6 +5,10 @@ import { useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { getById } from "../../../actions/index";
 import loadingImg from "../../../assets/loadingDog_2.gif";
+import { RiDeleteBin6Line } from "react-icons/ri";
+import { useHistory } from "react-router-dom";
+
+import { deleteDog, delete_Favorites } from "../../../actions/index";
 
 const Details = () => {
   const dispatch = useDispatch();
@@ -13,6 +17,22 @@ const Details = () => {
   const [loading, setLoading] = useState(true);
 
   let dogData = useSelector((state) => state.dog);
+  const history = useHistory();
+
+  function act() {
+    setLoading(true);
+
+    setTimeout(() => {
+      setLoading(false);
+    }, 1000);
+  }
+
+  function deleteAndBack(id) {
+    deleteDog(id, dispatch);
+    dispatch(delete_Favorites(id));
+    act();
+    history.goBack();
+  }
 
   useEffect(() => {
     dispatch(getById(id));
@@ -61,6 +81,16 @@ const Details = () => {
               <div className={styles.temperaments}>Temperaments</div>
               <span> {dogData.temperaments}</span>
             </div>
+            {dogData.userCreate ? (
+              <div className={styles.tacho}>
+                <span
+                  className={styles.iconDelete}
+                  onClick={() => deleteAndBack(id)}
+                >
+                  <RiDeleteBin6Line />
+                </span>
+              </div>
+            ) : null}
           </div>
         </div>
       )}

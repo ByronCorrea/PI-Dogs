@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect } from "react";
 import styles from "./Home.module.css";
-
+import loafingimg2 from "../../assets/loadingDog_2.gif";
 import { useSelector, useDispatch } from "react-redux";
 import loadingImg from "../../assets/dog-mitchells-vs-machines.gif";
 
@@ -17,6 +17,7 @@ import {
   getByBreed,
   deleteDog,
   delete_Favorites,
+  clearBreeds,
 } from "../../actions/index";
 
 import { HiArrowCircleRight, HiArrowCircleLeft } from "react-icons/hi";
@@ -114,6 +115,7 @@ const Home = () => {
       default:
         break;
     }
+    act();
   }
 
   function handleTemperament(e) {
@@ -130,6 +132,13 @@ const Home = () => {
     let el = document.getElementById("input_1");
 
     searchByInput(el.value);
+  }
+
+  function handleReset(e) {
+    e.preventDefault();
+    dispatch(clearBreeds());
+    dispatch(getDogs());
+    act();
   }
 
   useEffect(() => {
@@ -157,6 +166,7 @@ const Home = () => {
                 searchByInput(e.target.value);
 
                 e.target.value = "";
+                act();
               }
             }}
           />
@@ -197,6 +207,14 @@ const Home = () => {
               </option>
             ))}
         </select>
+        <button
+          className={styles.reset}
+          onClick={(e) => {
+            handleReset(e);
+          }}
+        >
+          Reset
+        </button>
       </div>
 
       <div className={styles.contRey}>
@@ -225,7 +243,10 @@ const Home = () => {
             ) : null
           )
         ) : (
-          <p>Connection error</p>
+          <div>
+            <img src={loafingimg2} alt="img" />
+            <h1 className={styles.no}>¡Connection error!</h1>
+          </div>
         )}
       </div>
 

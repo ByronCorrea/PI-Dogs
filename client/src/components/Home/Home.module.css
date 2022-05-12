@@ -111,3 +111,25 @@
   padding-top: 0.25rem;
   font-size: 1.3rem;
 }
+
+.no {
+  font-size: 5rem;
+  background-color: rgba(255, 255, 255, 0.244);
+  border-radius: 2rem;
+  padding: 0.5rem;
+  align-content: center;
+}
+
+.reset {
+  color: white;
+  background-color: rgba(0, 0, 0, 0.441);
+  cursor: pointer;
+  border: 1px solid black;
+  padding: 10px 10px 10px 15px;
+  border-radius: 8px;
+  margin-left: 0.3rem;
+}
+
+.reset:hover {
+  background-color: black;
+}

@@ -9,6 +9,7 @@ import {
   IS_FAVORITE,
   GET_FAVORITES,
   DELETE_FAVORITES,
+  CLEAR_BREEDS,
 } from "../actions/types";
 
 const initialState = {
@@ -20,6 +21,8 @@ const initialState = {
 
 export default function rootReducer(state = initialState, action) {
   switch (action.type) {
+    case CLEAR_BREEDS:
+      return { ...state, dogs: [] };
     case GET_DOGS:
       return { ...state, dogs: action.payload };
     case GET_TEMPERAMENTS:
