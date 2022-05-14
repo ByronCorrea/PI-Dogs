@@ -1,5 +1,5 @@
 import React from "react";
-import Perfil from "../../assets/cv.jpg";
+import Perfil from "../../assets/Perfil1.png";
 import styles from "./About.module.css";
 
 function About() {
