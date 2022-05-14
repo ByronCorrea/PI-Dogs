@@ -3,7 +3,7 @@
 Responsive web page created with the The Dog API. Pagination, alphabetical filtering, rating,
 breeds.
 
-![preview img](/preview.png)
+![preview img](/Preview.png)
 
 ```
 DB_USER=usuariodepostgres
