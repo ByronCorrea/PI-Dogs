@@ -8,43 +8,47 @@ import loadingImg from "../../../assets/loadingDog_2.gif";
 import { RiDeleteBin6Line } from "react-icons/ri";
 import { useHistory } from "react-router-dom";
 
-import { deleteDog, delete_Favorites } from "../../../actions/index";
+import {
+  deleteDog,
+  delete_Favorites,
+  clearDetails,
+} from "../../../actions/index";
 
 const Details = () => {
   const dispatch = useDispatch();
   const { id } = useParams();
 
-  const [loading, setLoading] = useState(true);
+  // const [setLoading] = useState(false);
 
   let dogData = useSelector((state) => state.dog);
   const history = useHistory();
 
-  function act() {
-    setLoading(true);
+  // function act() {
+  //   if()
+  //   // setLoading(true);
+  //   //   setLoading(false);
 
-    setTimeout(() => {
-      setLoading(false);
-    }, 1000);
-  }
+  // }
 
   function deleteAndBack(id) {
     deleteDog(id, dispatch);
     dispatch(delete_Favorites(id));
-    act();
+    // act();
     history.goBack();
   }
 
   useEffect(() => {
+    dispatch(clearDetails());
     dispatch(getById(id));
 
-    setTimeout(() => {
-      setLoading(false);
-    }, 1000);
+    // setTimeout(() => {
+    //   setLoading(false);
+    // }, 1000);
   }, [dispatch]);
 
   return (
     <div className={styles.contRey}>
-      {loading ? (
+      {!dogData.name ? (
         <div className={styles.caja}>
           <div className={styles.contImg_loading}>
             <img alt="" src={loadingImg} />

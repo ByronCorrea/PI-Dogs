@@ -120,7 +120,7 @@ const Home = () => {
 
   function handleTemperament(e) {
     console.log(e.target.value);
-    act();
+
     dispatch(getDogsForTemperament(e.target.value));
   }
 
