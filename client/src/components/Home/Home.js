@@ -17,7 +17,7 @@ import {
   getByBreed,
   deleteDog,
   delete_Favorites,
-  clearBreeds,
+  clearDogs,
 } from "../../actions/index";
 
 import { HiArrowCircleRight, HiArrowCircleLeft } from "react-icons/hi";
@@ -136,7 +136,7 @@ const Home = () => {
 
   function handleReset(e) {
     e.preventDefault();
-    dispatch(clearBreeds());
+    dispatch(clearDogs());
     dispatch(getDogs());
     act();
   }

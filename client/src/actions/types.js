@@ -9,5 +9,5 @@ export const DELETE_DOG = "DELETE_DOG";
 export const IS_FAVORITE = "IS_FAVORITE";
 export const GET_FAVORITES = "GET_FAVORITES";
 export const DELETE_FAVORITES = "DELETE_FAVORITES";
-export const CLEAR_BREEDS = "CLEAR_BREEDS";
+export const CLEAR_DOGS = "CLEAR_BREEDS";
 export const CLEAR_DETAILS = "CLEAR_DETAILS";

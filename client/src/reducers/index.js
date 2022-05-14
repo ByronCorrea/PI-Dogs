@@ -9,7 +9,7 @@ import {
   IS_FAVORITE,
   GET_FAVORITES,
   DELETE_FAVORITES,
-  CLEAR_BREEDS,
+  CLEAR_DOGS,
   CLEAR_DETAILS,
 } from "../actions/types";
 
@@ -24,7 +24,7 @@ export default function rootReducer(state = initialState, action) {
   switch (action.type) {
     case CLEAR_DETAILS:
       return { ...state, dog: [] };
-    case CLEAR_BREEDS:
+    case CLEAR_DOGS:
       return { ...state, dogs: [] };
     case GET_DOGS:
       return { ...state, dogs: action.payload };
