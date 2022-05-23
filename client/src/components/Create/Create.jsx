@@ -6,8 +6,10 @@ import { createDog } from "../../actions";
 import { useHistory } from "react-router-dom";
 import dog from "../../assets/asoma_2.png";
 import { getTemperaments } from "../../actions/index";
+import { TabTitle } from "../GeneralFunctions";
 
 const Create = () => {
+  TabTitle("Create");
   const dispatch = useDispatch();
 
   const allTemperaments = useSelector((state) => state.temperaments);

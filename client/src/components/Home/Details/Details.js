@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import styles from "./Details.module.css";
 import { useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
@@ -13,8 +13,10 @@ import {
   delete_Favorites,
   clearDetails,
 } from "../../../actions/index";
+import { TabTitle } from "../../GeneralFunctions";
 
 const Details = () => {
+  TabTitle("Details");
   const dispatch = useDispatch();
   const { id } = useParams();
 

@@ -14,8 +14,10 @@ import {
 } from "../../actions/index";
 import { RiDeleteBin6Line } from "react-icons/ri";
 import { HiArrowCircleRight, HiArrowCircleLeft } from "react-icons/hi";
+import { TabTitle } from "../GeneralFunctions";
 
 const Home = () => {
+  TabTitle("Favorites");
   //me traigo el estado de mi action con useSelector
   const dispatch = useDispatch();
 
