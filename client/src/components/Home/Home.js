@@ -21,8 +21,10 @@ import {
 } from "../../actions/index";
 
 import { HiArrowCircleRight, HiArrowCircleLeft } from "react-icons/hi";
+import { TabTitle } from "../../components/GeneralFunctions";
 
 const Home = () => {
+  TabTitle("Home");
   //me traigo el estado de mi action con useSelector
   const dispatch = useDispatch();
 
