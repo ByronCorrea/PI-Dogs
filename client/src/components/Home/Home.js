@@ -247,7 +247,7 @@ const Home = () => {
         ) : (
           <div>
             <img src={loafingimg2} alt="img" />
-            <h1 className={styles.no}>¡Connection error!</h1>
+            {/* <h1 className={styles.no}>¡Connection error!</h1> */}
           </div>
         )}
       </div>
